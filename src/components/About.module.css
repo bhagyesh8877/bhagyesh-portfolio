@@ -1,0 +1,154 @@
+.about {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-alpha);
+  z-index: 1;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.sectionNum {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoCard {
+  border: 1px solid var(--border);
+  background-color: var(--terminal-bg);
+}
+
+.cardHeader {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--inverse-bg);
+  color: var(--inverse-fg);
+}
+
+.cardTitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.principlesList {
+  list-style: none;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.principleItem {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--subtext);
+}
+
+.principleItem strong {
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  display: block;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.statBox {
+  border: 1px dashed var(--border);
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--card-bg);
+}
+
+.statNum {
+  font-family: var(--font-mono);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--subtext);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 968px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .about {
+    padding: 6rem 2rem;
+  }
+}

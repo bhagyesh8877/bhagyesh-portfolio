@@ -1,0 +1,210 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem 2rem;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px dashed var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.tagDot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--foreground);
+  border-radius: 50%;
+  animation: blink 1s step-end infinite;
+}
+
+.tagText {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.0;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  color: var(--foreground);
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 620px;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.secBtn {
+  background-color: var(--inverse-bg);
+  color: var(--inverse-fg);
+}
+
+.secBtn::after {
+  background-color: var(--background);
+}
+
+.secBtn:hover {
+  color: var(--foreground);
+}
+
+/* Dashboard Side Console */
+.dashboard {
+  border: 1px solid var(--border);
+  background-color: var(--terminal-bg);
+  box-shadow: 0 10px 30px var(--border-alpha);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.dashboard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px var(--border-alpha);
+}
+
+.dashHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--inverse-bg);
+  color: var(--inverse-fg);
+}
+
+.dashTitle {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.dashControls {
+  display: flex;
+  gap: 5px;
+}
+
+.dashDot {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--inverse-fg);
+  border-radius: 50%;
+}
+
+.dashContent {
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dashRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashKey {
+  color: var(--subtext);
+}
+
+.dashVal {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.pulseDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--foreground);
+  border-radius: 50%;
+  margin-right: 4px;
+  animation: blink 1.2s step-end infinite;
+}
+
+.dashDivider {
+  height: 1px;
+  background-color: var(--border-alpha);
+  margin: 0.5rem 0;
+}
+
+.dashCodeBlock {
+  background-color: var(--card-bg);
+  padding: 0.75rem;
+  border: 1px dashed var(--border-alpha);
+  color: var(--foreground);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+@media (max-width: 968px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-top: 7rem;
+    min-height: auto;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .dashboard {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions a {
+    width: 100%;
+  }
+}

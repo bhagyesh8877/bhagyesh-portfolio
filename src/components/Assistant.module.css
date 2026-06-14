@@ -1,0 +1,239 @@
+.assistant {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-alpha);
+  z-index: 1;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.sectionNum {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+/* Preset Chips */
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.presetChip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--foreground);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.02em;
+}
+
+.presetChip:hover {
+  background-color: var(--inverse-bg);
+  color: var(--inverse-fg);
+}
+
+.presetChip:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Terminal Styling */
+.terminal {
+  border: 1px solid var(--border);
+  background-color: var(--terminal-bg);
+  box-shadow: 0 15px 40px var(--border-alpha);
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+  overflow: hidden;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--inverse-bg);
+  color: var(--inverse-fg);
+}
+
+.termControls {
+  display: flex;
+  gap: 6px;
+}
+
+.termDot {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--inverse-fg);
+  border-radius: 50%;
+}
+
+.terminalTitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.terminalBody {
+  flex-grow: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  line-height: 1.5;
+}
+
+/* Log Rows */
+.logRow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.logSymbol {
+  opacity: 0.6;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.logInfo {
+  color: var(--foreground);
+}
+
+.logSearch {
+  color: var(--subtext);
+}
+
+.logRag {
+  color: var(--foreground);
+  font-weight: 500;
+  border-left: 2px solid var(--border);
+  padding-left: 0.5rem;
+}
+
+.logLlm {
+  color: var(--subtext);
+  font-style: italic;
+}
+
+/* Response Container */
+.responseContainer {
+  margin-top: 1.25rem;
+  border: 1px dashed var(--border-alpha);
+  background-color: var(--card-bg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.responseLabel {
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--foreground);
+}
+
+.responseContent {
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* Input Form */
+.terminalForm {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  background-color: var(--terminal-bg);
+  gap: 0.75rem;
+}
+
+.promptSymbol {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.terminalInput {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--foreground);
+  outline: none;
+}
+
+.terminalInput::placeholder {
+  color: var(--subtext);
+  opacity: 0.5;
+}
+
+.submitBtn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--inverse-bg);
+  color: var(--inverse-fg);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.submitBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    height: 480px;
+  }
+
+  .assistant {
+    padding: 6rem 2rem;
+  }
+}

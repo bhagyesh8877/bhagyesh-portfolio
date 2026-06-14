@@ -1,0 +1,140 @@
+.expertise {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-alpha);
+  z-index: 1;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.sectionNum {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  border: 1px solid var(--border);
+  background-color: var(--terminal-bg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  background-color: var(--inverse-bg);
+  color: var(--inverse-fg);
+}
+
+.card:hover p,
+.card:hover .skillsTitle,
+.card:hover .skillItem,
+.card:hover .cardNum {
+  color: var(--inverse-fg);
+  opacity: 0.8;
+}
+
+.card:hover .divider {
+  background-color: var(--inverse-fg);
+  opacity: 0.2;
+}
+
+.cardTop {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cardNum {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--subtext);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border);
+  margin-bottom: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.skillsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skillsTitle {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--foreground);
+}
+
+.skillsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.skillItem {
+  font-size: 0.8125rem;
+  color: var(--subtext);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.itemDot {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .expertise {
+    padding: 6rem 2rem;
+  }
+}

@@ -1,34 +1,41 @@
 :root {
+  --background-raw: 0, 0%, 100%;
+  --foreground-raw: 0, 0%, 0%;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --subtext: rgba(0, 0, 0, 0.6);
+  --border: #000000;
+  --border-alpha: rgba(0, 0, 0, 0.12);
+  --inverse-bg: #000000;
+  --inverse-fg: #ffffff;
+  --card-bg: rgba(0, 0, 0, 0.02);
+  --card-bg-hover: rgba(0, 0, 0, 0.05);
+  --grid-line: rgba(0, 0, 0, 0.05);
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --terminal-bg: #ffffff;
+  --terminal-border: #000000;
+  --selection-bg: #000000;
+  --selection-fg: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[data-theme="dark"] {
+  --background-raw: 0, 0%, 0%;
+  --foreground-raw: 0, 0%, 100%;
+  --background: #000000;
+  --foreground: #ffffff;
+  --subtext: rgba(255, 255, 255, 0.6);
+  --border: #ffffff;
+  --border-alpha: rgba(255, 255, 255, 0.15);
+  --inverse-bg: #ffffff;
+  --inverse-fg: #000000;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-bg-hover: rgba(255, 255, 255, 0.08);
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --terminal-bg: #000000;
+  --terminal-border: #ffffff;
+  --selection-bg: #ffffff;
+  --selection-fg: #000000;
 }
 
 * {
@@ -37,13 +44,134 @@ body {
   margin: 0;
 }
 
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grid Background */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  opacity: 0.85;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--subtext);
+}
+
+/* Typography elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+p {
+  color: var(--subtext);
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Custom interactive classes */
+.mono-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
+
+.mono-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--inverse-bg);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.mono-btn:hover {
+  color: var(--inverse-fg);
+  border-color: var(--border);
+}
+
+.mono-btn:hover::after {
+  transform: translateY(0);
+}
+
+.mono-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.glow-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 15px var(--border-alpha);
+}
+
