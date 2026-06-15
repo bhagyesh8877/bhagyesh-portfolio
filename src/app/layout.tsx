@@ -39,7 +39,16 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`,
+            __html: `(function(){
+              try {
+                var t = localStorage.getItem("theme");
+                if (!t) {
+                  var hour = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"})).getHours();
+                  t = (hour >= 18 || hour < 6) ? "dark" : "light";
+                }
+                document.documentElement.setAttribute("data-theme", t);
+              } catch(e) {}
+            })()`,
           }}
         />
       </head>

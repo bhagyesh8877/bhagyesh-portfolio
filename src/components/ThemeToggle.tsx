@@ -6,8 +6,12 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
-    const current =
-      (document.documentElement.getAttribute("data-theme") as "dark" | "light") || "dark";
+    let current = document.documentElement.getAttribute("data-theme") as "dark" | "light" | null;
+    if (!current) {
+      const hour = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })).getHours();
+      current = (hour >= 18 || hour < 6) ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", current);
+    }
     setTheme(current);
   }, []);
 

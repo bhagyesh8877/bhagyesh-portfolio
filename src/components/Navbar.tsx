@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
@@ -13,9 +13,32 @@ const links = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [timeString, setTimeString] = useState<string>("");
 
   const toggleMenu = () => setIsOpen((v) => !v);
   const closeMenu = () => setIsOpen(false);
+
+  useEffect(() => {
+    const updateClock = () => {
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: "Asia/Kolkata",
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      };
+      
+      const now = new Date();
+      setTimeString(now.toLocaleString("en-US", options) + " IST");
+    };
+
+    updateClock();
+    const interval = setInterval(updateClock, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <header className="navbar">
@@ -47,6 +70,20 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          {timeString && (
+            <span className="navbar-time" style={{
+              fontFamily: "var(--font-geist-mono), monospace",
+              fontSize: "0.8125rem",
+              color: "var(--subtext)",
+              marginRight: "1.5rem",
+              padding: "0.25rem 0.5rem",
+              border: "1px solid var(--border)",
+              borderRadius: "4px",
+              backgroundColor: "var(--card-bg)"
+            }}>
+              {timeString}
+            </span>
+          )}
           <ThemeToggle />
         </nav>
 
@@ -62,6 +99,21 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          {timeString && (
+            <div className="navbar-time-mobile" style={{
+              fontFamily: "var(--font-geist-mono), monospace",
+              fontSize: "0.875rem",
+              color: "var(--subtext)",
+              marginBottom: "1.5rem",
+              padding: "0.5rem 1rem",
+              border: "1px solid var(--border)",
+              borderRadius: "4px",
+              backgroundColor: "var(--card-bg)",
+              textAlign: "center"
+            }}>
+              {timeString}
+            </div>
+          )}
           <ThemeToggle />
         </nav>
       </div>
