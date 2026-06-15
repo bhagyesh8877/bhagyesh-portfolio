@@ -1,76 +1,44 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./ThemeToggle.module.css";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
-    // Determine the current theme from the HTML attribute set by inline script
-    const currentTheme =
-      (document.documentElement.getAttribute("data-theme") as "dark" | "light") ||
-      "dark";
-    setTheme(currentTheme);
+    const current =
+      (document.documentElement.getAttribute("data-theme") as "dark" | "light") || "dark";
+    setTheme(current);
   }, []);
 
-  const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", nextTheme);
-    localStorage.setItem("theme", nextTheme);
-    setTheme(nextTheme);
+  const toggle = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    setTheme(next);
   };
 
   return (
     <button
-      onClick={toggleTheme}
-      className={styles.toggleBtn}
+      onClick={toggle}
+      className="theme-toggle"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
     >
-      <div className={styles.iconContainer}>
+      <span className="theme-toggle-icon">
         {theme === "dark" ? (
-          // Moon icon
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={styles.icon}
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
           </svg>
         ) : (
-          // Sun icon
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={styles.icon}
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="4" />
-            <path d="M12 2v2" />
-            <path d="M12 20v2" />
-            <path d="m4.93 4.93 1.41 1.41" />
-            <path d="m17.66 17.66 1.41 1.41" />
-            <path d="M2 12h2" />
-            <path d="M20 12h2" />
-            <path d="m6.34 17.66-1.41 1.41" />
-            <path d="m19.07 4.93-1.41 1.41" />
+            <path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-15.07 5.66-1.41 1.41M19.07 4.93l-1.41 1.41" />
           </svg>
         )}
-      </div>
-      <span className={styles.label}>{theme === "dark" ? "LIGHT" : "DARK"}</span>
+      </span>
+      <span>{theme === "dark" ? "LIGHT" : "DARK"}</span>
     </button>
   );
 }
