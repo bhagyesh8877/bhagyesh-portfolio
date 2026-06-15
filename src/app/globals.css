@@ -1440,3 +1440,22 @@ a {
   pointer-events: none;
   opacity: 0.35;
 }
+
+.navbar-time {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--subtext);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border-alpha);
+  border-radius: 4px;
+  background-color: var(--card-bg);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 968px) {
+  .navbar-time {
+    display: none;
+  }
+}

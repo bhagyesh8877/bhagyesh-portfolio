@@ -43,10 +43,17 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar-container">
-        {/* Logo */}
-        <a href="#" className="navbar-logo" onClick={closeMenu}>
-          BHAGYESH<span className="cursor-blink">_</span>
-        </a>
+        {/* Logo & Clock Group */}
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <a href="#" className="navbar-logo" onClick={closeMenu}>
+            BHAGYESH<span className="cursor-blink">_</span>
+          </a>
+          {timeString && (
+            <span className="navbar-time">
+              {timeString}
+            </span>
+          )}
+        </div>
 
         {/* Hamburger (mobile only) */}
         <button
@@ -70,20 +77,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          {timeString && (
-            <span className="navbar-time" style={{
-              fontFamily: "var(--font-geist-mono), monospace",
-              fontSize: "0.8125rem",
-              color: "var(--subtext)",
-              marginRight: "1.5rem",
-              padding: "0.25rem 0.5rem",
-              border: "1px solid var(--border)",
-              borderRadius: "4px",
-              backgroundColor: "var(--card-bg)"
-            }}>
-              {timeString}
-            </span>
-          )}
           <ThemeToggle />
         </nav>
 
